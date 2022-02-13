@@ -1,0 +1,25 @@
+.winter,
+.spring,
+.autumn,
+.summer {
+  background-repeat: no-repeat;
+  position: fixed;
+  background-size: cover;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.winter {
+    background-image: url(../utils/img/winter.jpg);
+}
+.spring {
+    background: url(../utils/img/spring.jpg);
+}
+.summer {
+    background: url(../utils/img/summer.jpg);
+}
+.autumn {
+    background: url(../utils/img/autumn.jpg);
+}
