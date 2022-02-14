@@ -25,7 +25,7 @@ const App = () => {
         <Routes>
           <Route
             exact
-            path="/"
+            path="/weather-app"
             element={<TodaysForecast wallPaper={wallPaper}/>}
           />
           <Route
