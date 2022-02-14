@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/shop-web/static/css/main.0f89d1ae.css",
+    "main.js": "/shop-web/static/js/main.11e7c9b6.js",
+    "static/media/winter.jpg": "/shop-web/static/media/winter.f7608755e7262a619f67.jpg",
+    "static/media/summer.jpg": "/shop-web/static/media/summer.554dc07c3363eda716e6.jpg",
+    "static/media/autumn.jpg": "/shop-web/static/media/autumn.f5a3c4125dc8fcbf8cad.jpg",
+    "static/media/spring.jpg": "/shop-web/static/media/spring.9051446c301bdb31e520.jpg",
+    "index.html": "/shop-web/index.html",
+    "main.0f89d1ae.css.map": "/shop-web/static/css/main.0f89d1ae.css.map",
+    "main.11e7c9b6.js.map": "/shop-web/static/js/main.11e7c9b6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0f89d1ae.css",
+    "static/js/main.11e7c9b6.js"
+  ]
+}
