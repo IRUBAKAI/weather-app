@@ -1,0 +1,29 @@
+.search {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid gray;
+  font-size: 20px;
+  width: 200px;
+  outline: none;
+}
+form, .daily_link {
+  margin: 0 0 20px 20px;
+}
+.search_icon {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    background-image: url(../utils/img/search_icon.png);
+    background-size: cover;
+    width: 20px;
+    margin-left: 10px;
+}
+.daily_link {
+  font-weight: bold;
+  font-size: 20px;
+}
+.daily_link a {
+  text-decoration: none;
+  color: #000;
+  border-bottom: 1px solid gray;
+}

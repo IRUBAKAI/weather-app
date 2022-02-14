@@ -1,0 +1,17 @@
+.daily_block {
+  display: flex;
+  background-color: #ccccffb4;
+  justify-content: space-between;
+  padding: 20px 200px;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+.sideBar {
+    border-right: 1px solid gray;
+    border-left: 1px solid gray;
+    padding: 0 50px;
+}
+.daily_block p{
+    margin: 5px 0;
+}

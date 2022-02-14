@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styles from "./MainPage.module.css";
 import "./Background.css";
+import HourlyForecast from "./HourlyForecast";
+import { menu } from "../utils/icons";
+import { BurgerMenu } from "../BurgerMenu";
 
-const MainPages = () => {
+const MainPages = ({ wallPaper }) => {
   const [currentDay, setCurrentDay] = useState([]);
   const [hourlyForecast, setHourlyForecast] = useState([]);
-  const [wallPaper, setWallPaper] = useState("");
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -15,7 +18,6 @@ const MainPages = () => {
       getHourlyForecast(lat, lon, key);
       getCurrentDay(lat, lon, key);
     });
-    backgroundChanger();
   }, []);
 
   const getCurrentDay = (lat, lon, key) => {
@@ -23,30 +25,41 @@ const MainPages = () => {
       `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${key}`
     )
       .then((res) => res.json())
-      .then((todayWeatherInfo) => setCurrentDay([todayWeatherInfo]));
+      .then((todayWeatherInfo) => setCurrentDay([todayWeatherInfo]))
+      .catch((error) => {
+        console.log(error);
+      });
   };
   const getHourlyForecast = (lat, lon, key) => {
     fetch(
       `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${key}`
     )
       .then((res) => res.json())
-      .then((todayWeatherInfo) => setHourlyForecast(todayWeatherInfo.list.slice(0,6)));
+      .then((todayWeatherInfo) =>
+        setHourlyForecast(todayWeatherInfo.list.slice(0, 5))
+      )
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
-  const backgroundChanger = () => {
-    let date = new Date();
-    let dateMonth = date.getMonth();
-    if (dateMonth >= 12 || dateMonth === 1) setWallPaper("winter");
-    if (dateMonth >= 2 || dateMonth === 4) setWallPaper("spring");
-    if (dateMonth >= 5 || dateMonth === 7) setWallPaper("summer");
-    if (dateMonth >= 8 || dateMonth === 11) setWallPaper("summer");
+  const menuSwitcher = () => {
+    if (active === false) {
+      setActive(true);
+    } else setActive(false);
   };
-
-  console.log(currentDay);
-  console.log(hourlyForecast)
 
   return (
     <div className={wallPaper}>
+      <p onClick={() => menuSwitcher()} className={styles.burger_menu_icon}>
+        {menu}
+      </p>
+      <div className={active === true ? styles.active_menu : styles.unActive}>
+        <BurgerMenu
+          setCurrentDay={setCurrentDay}
+          setHourlyForecast={setHourlyForecast}
+        />
+      </div>
       {currentDay.map((item) =>
         item.weather.map((weather) => (
           <>
@@ -57,14 +70,22 @@ const MainPages = () => {
               </div>
             </div>
             <footer className={styles.footer}>
-              <h3>Today</h3>
-              <div>
-                <p>Now</p>
-                <img
-                  src={`http://openweathermap.org/img/wn/${weather.icon}.png`}
-                  alt=""
-                />
-                <p>{item.main.temp}</p>
+              <div className={styles.hourly_title}>
+                <h1>Today</h1>
+                <h1>{item.name}</h1>
+              </div>
+              <div className={styles.footer_container}>
+                <div>
+                  <p>Now</p>
+                  <img
+                    src={`http://openweathermap.org/img/wn/${weather.icon}.png`}
+                    alt=""
+                  />
+                  <p>{item.main.temp}&#176;</p>
+                </div>
+                {hourlyForecast.map((hourly, index) => (
+                  <HourlyForecast hourly={hourly} index={index} />
+                ))}
               </div>
             </footer>
           </>
