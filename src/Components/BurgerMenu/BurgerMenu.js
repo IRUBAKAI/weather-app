@@ -69,6 +69,7 @@ const BurgerMenu = ({ setCurrentDay, setHourlyForecast }) => {
 
       <div className={styles.daily_link}>
         <Link to="/dailyforecast">Daily-Forecast {days}</Link>
+        <Link to="/weather-app">Current-Day Forecast</Link>
       </div>
     </>
   );

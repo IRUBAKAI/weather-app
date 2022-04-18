@@ -6,9 +6,9 @@
   position: absolute;
   bottom: 0px;
   min-width: 100%;
-  height: 200px;
+  height: 250px;
   background-color: #ccccff;
-  padding: 20px 0;
+  padding: 20px 0 40px;
   font-weight: bold;
 }
 .footer h1 {
@@ -19,7 +19,7 @@
   flex-direction: row;
   justify-content: space-between;
   margin: auto;
-  padding: 0 300px;
+  padding: 0 200px;
   text-align: center;
   font-size: 18px;
 }

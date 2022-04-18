@@ -21,9 +21,12 @@ form, .daily_link {
 .daily_link {
   font-weight: bold;
   font-size: 20px;
+  display: flex;
+  flex-direction: column;
 }
 .daily_link a {
   text-decoration: none;
   color: #000;
   border-bottom: 1px solid gray;
+  margin: 10px 0;
 }

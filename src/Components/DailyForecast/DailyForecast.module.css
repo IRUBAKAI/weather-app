@@ -2,7 +2,7 @@
   display: flex;
   background-color: #ccccffb4;
   justify-content: space-between;
-  padding: 20px 100px;
+  padding: 20px 160px;
   font-size: 20px;
   text-align: center;
   font-weight: bold;
@@ -10,7 +10,7 @@
 .sideBar {
   border-right: 1px solid gray;
   border-left: 1px solid gray;
-  padding: 0 30px;
+  padding: 0 32px;
   cursor: pointer;
 }
 .daily_block p {
@@ -19,9 +19,34 @@
 .temp span {
   margin: 0 10px;
 }
+
+/* HOURLY */
 main {
   width: 1200px;
   height: 500px;
   background-color: #ccccffb4;
-  margin: auto;
+  margin: 20px auto 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+.hourly_title {
+  padding: 50px 0 0 50px;
+}
+.hourly_info {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+.hourly_blocks {
+  margin: 0 10px;
+}
+.daily_hourly_forecast_titles {
+  display: flex;
+  justify-content: space-between;
+}
+.hourly_title {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px 40px;
 }

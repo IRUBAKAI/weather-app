@@ -81,11 +81,18 @@ const MainPages = ({ wallPaper }) => {
                     src={`http://openweathermap.org/img/wn/${weather.icon}.png`}
                     alt=""
                   />
+                  <p>{item.weather[0].description}</p>
                   <p>{item.main.temp}&#176;</p>
+                  <p>wind speed: {item.wind.speed}</p>
                 </div>
-                {hourlyForecast.map((hourly, index) => (
-                  <HourlyForecast hourly={hourly} index={index} />
-                ))}
+                {hourlyForecast.map((hourly, index) => {
+                  const sec = hourly.dt;
+                  const date = new Date(sec * 1000);
+                  const time = date.toLocaleTimeString().slice(0, 2);
+                  return (
+                    <HourlyForecast hourly={hourly} index={index} time={time} />
+                  );
+                })}
               </div>
             </footer>
           </>
