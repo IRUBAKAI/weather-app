@@ -43,7 +43,7 @@ const DailyForecast = ({ wallPaper }) => {
     )
       .then((res) => res.json())
       .then((todayWeatherInfo) => {
-        setCurrentDay([todayWeatherInfo]);
+        setCurrentDay(todayWeatherInfo);
         console.log(todayWeatherInfo);
       })
       .catch((error) => {
@@ -78,7 +78,7 @@ const DailyForecast = ({ wallPaper }) => {
   let hourlyChangedArray = [];
 
   hourlyForecast.map((item) => {
-    const date = new Date(day.dt * 1000).toString().slice(8, 10);
+    const date = new Date(day * 1000).toString().slice(8, 10);
     let slice = item.dt_txt.slice(8, 10);
     if (slice === date) {
       hourlyChangedArray.push(item);
@@ -115,33 +115,29 @@ const DailyForecast = ({ wallPaper }) => {
         </div>
         <div className={styles.daily_block}>
           <div className={styles.sideBar}>
-            {currentDay.map((day) => (
-              <>
-                <div onClick={() => setDay(day)}>
-                  <p>{showDay(day.dt)}</p>
-                  <p>{showDate(day.dt)}</p>
-                  <p>{showMonth(day.dt)}</p>
-                  <img
-                    src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
-                    alt=""
-                  />
-                  <div className={styles.temp}>
-                    <div>
-                      <span>min</span>
-                      <span>max</span>
-                    </div>
-                    <div>
-                      <span>{day.main.temp_min}&#176;</span>
-                      <span>{day.main.temp_max}&#176;</span>
-                    </div>
-                  </div>
+            <div onClick={() => setDay(currentDay.dt)}>
+              <p>{showDay(currentDay.dt)}</p>
+              <p>{showDate(currentDay.dt)}</p>
+              <p>{showMonth(currentDay.dt)}</p>
+              <img
+                src={`http://openweathermap.org/img/wn/${currentDay.weather[0].icon}.png`}
+                alt=""
+              />
+              <div className={styles.temp}>
+                <div>
+                  <span>min</span>
+                  <span>max</span>
                 </div>
-              </>
-            ))}
+                <div>
+                  <span>{currentDay.main.temp_min}&#176;</span>
+                  <span>{currentDay.main.temp_max}&#176;</span>
+                </div>
+              </div>
+            </div>
           </div>
           {dailyForecast.map((forecast) => (
             <>
-              <div className={styles.sideBar} onClick={() => setDay(forecast)}>
+              <div className={styles.sideBar} onClick={() => setDay(forecast.dt)}>
                 <p>{showDay(forecast.dt)}</p>
                 <p>{showDate(forecast.dt)}</p>
                 <p>{showMonth(forecast.dt)}</p>
@@ -164,17 +160,12 @@ const DailyForecast = ({ wallPaper }) => {
           ))}
         </div>
         <main>
-          {currentDay.map((item) => {
-            return (
-              <div className={styles.hourly_title}>
-                <h1>Hourly forecast</h1>
-                <h1>{item.name}</h1>
-              </div>
-            );
-          })}
+          <div className={styles.hourly_title}>
+            <h1>Hourly forecast</h1>
+            <h1>{currentDay.name}</h1>
+          </div>
           <div className={styles.hourly_info}>
             {hourlyChangedArray.map((hourly, index) => {
-              console.log(hourly);
               const sec = hourly.dt;
               const date = new Date(sec * 1000);
               const time = date.toLocaleTimeString().slice(0, 2);

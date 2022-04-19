@@ -13,7 +13,7 @@ const BurgerMenu = ({ setCurrentDay, setHourlyForecast }) => {
       `http://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=${key}`
     )
       .then((res) => res.json())
-      .then((weather) => setCurrentDay([weather]))
+      .then((weather) => setCurrentDay(weather))
       .catch((error) => {
         console.log(error);
       });

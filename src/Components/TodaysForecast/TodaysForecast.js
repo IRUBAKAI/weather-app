@@ -17,8 +17,6 @@ const MainPages = ({ wallPaper }) => {
       const lon = position.coords.longitude;
       getHourlyForecast(lat, lon, key);
       getCurrentDay(lat, lon, key);
-            console.log(lat, lon)
-
     });
   }, []);
 
