@@ -82,7 +82,6 @@ const DailyForecast = ({ wallPaper }) => {
     }
     return item;
   });
-  console.log(hourlyChangedArray);
 
   const menuSwitcher = () => {
     if (active === false) {
