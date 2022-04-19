@@ -89,7 +89,6 @@ const DailyForecast = ({ wallPaper }) => {
     } else setActive(false);
   };
 
-  console.log(hourlyForecast)
 
   return (
     <>
