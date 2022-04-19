@@ -42,7 +42,10 @@ const DailyForecast = ({ wallPaper }) => {
       `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${key}`
     )
       .then((res) => res.json())
-      .then((todayWeatherInfo) => setCurrentDay([todayWeatherInfo]))
+      .then((todayWeatherInfo) => {
+        setCurrentDay([todayWeatherInfo]);
+        console.log(todayWeatherInfo);
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -82,15 +85,12 @@ const DailyForecast = ({ wallPaper }) => {
     }
     return item;
   });
-  console.log(hourlyChangedArray);
 
   const menuSwitcher = () => {
     if (active === false) {
       setActive(true);
     } else setActive(false);
   };
-
-  console.log(hourlyForecast)
 
   return (
     <>
